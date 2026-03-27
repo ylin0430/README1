@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>個人履歷 - 柯靜宜</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root{
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --border:#e5e7eb;
+    --text:#1f2937;
+    --sub:#6b7280;
+    --accent:#4f46e5;
+}
+
+body{
+    margin:0;
+    font-family:'Noto Sans TC',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* header */
+header{
+    text-align:center;
+    padding:50px 20px 30px;
+}
+
+.profile-img{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    border:3px solid var(--border);
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    cursor:pointer;
+    transition:0.3s;
+}
+.profile-img:hover{
+    transform:scale(1.05);
+}
+
+h1{margin:10px 0 5px;}
+.subtitle{color:var(--sub);}
+.career{color:var(--accent);font-size:0.9rem;}
+
+/* layout */
+.layout{
+    display:grid;
+    grid-template-columns: 300px 1fr;
+    gap:25px;
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+/* card */
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+
+.title{
+    color:var(--accent);
+    margin-bottom:15px;
+    font-size:1.2rem;
+    font-weight:600;
+}
+
+.sidebar .info-item{
+    margin-bottom:10px;
+    font-size:0.95rem;
+}
+
+.sidebar i{
+    color:var(--accent);
+    margin-right:8px;
+}
+
+/* skills */
+.skill{
+    margin-bottom:14px;
+    font-size:0.9rem;
+}
+.skill-bar{
+    height:6px;
+    background:#eef2ff;
+    border-radius:10px;
+}
+.skill-level{
+    height:100%;
+    background:linear-gradient(90deg,#6366f1,#60a5fa);
+    width:0;
+    border-radius:10px;
+    transition:1s;
+}
+
+/* timeline */
+.timeline-item{
+    margin-bottom:20px;
+    padding-left:15px;
+    border-left:3px solid #e0e7ff;
+}
+
+p{
+    color:var(--sub);
+    margin:5px 0;
+}
+
+/* 圖片放大 */
+.image-modal{
+    display:none;
+    position:fixed;
+    z-index:9999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    justify-content:center;
+    align-items:center;
+}
+.image-modal img{
+    max-width:80%;
+    max-height:80%;
+    border-radius:10px;
+}
+
+/* 響應式 */
+@media(max-width:768px){
+    .layout{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 背景音樂 -->
+<audio autoplay loop controls style="position:fixed; bottom:10px; right:10px; z-index:999;">
+    <source src="mymusic.mp3" type="audio/mpeg">
+</audio>
+
+<header>
+    <img src="IMG_3882.jpeg" class="profile-img" onclick="openImage(this.src)">
+    <h1>柯靜宜</h1>
+    <div class="subtitle">亞洲大學 | 學號：114024010</div>
+    <div class="career">求職意向：輕鬆、有創作力的崗位</div>
+</header>
+
+<div class="layout">
+
+<div class="sidebar">
+
+<div class="card">
+<div class="title">個人資訊</div>
+<div class="info-item"><i class="fas fa-id-card"></i>柯靜宜</div>
+<div class="info-item"><i class="fas fa-user-graduate"></i>亞洲大學</div>
+<div class="info-item"><i class="fas fa-id-badge"></i>114024010</div>
+<div class="info-item"><i class="fas fa-graduation-cap"></i>大學在學中</div>
+<div class="info-item"><i class="fas fa-phone"></i>0912-345-678</div>
+<div class="info-item"><i class="fas fa-envelope"></i>example@email.com</div>
+<div class="info-item"><i class="fas fa-map-marker-alt"></i>台中某處限時開放冷氣宿舍</div>
+<div class="info-item"><i class="fas fa-birthday-cake"></i>2003/02/30</div>
+</div>
+
+<div class="card">
+<div class="title">技能</div>
+
+<div class="skill">聽人話 40%
+<div class="skill-bar"><div class="skill-level" data-level="40"></div></div>
+</div>
+
+<div class="skill">畫大餅 95%
+<div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
+</div>
+
+<div class="skill">Python 1%
+<div class="skill-bar"><div class="skill-level" data-level="1"></div></div>
+</div>
+
+<div class="skill">英文能力 10%
+<div class="skill-bar"><div class="skill-level" data-level="10"></div></div>
+</div>
+
+<div class="skill">團隊合作 15%
+<div class="skill-bar"><div class="skill-level" data-level="15"></div></div>
+</div>
+
+<div class="skill">暴力問題解決 100%
+<div class="skill-bar"><div class="skill-level" data-level="100"></div></div>
+</div>
+
+</div>
+
+</div>
+
+<div class="main">
+
+<div class="card">
+<div class="title">教育背景</div>
+
+<div class="timeline-item">
+<strong>2025 - 至今</strong>
+<p>亞洲大學 - 資訊傳播學系</p>
+<p>學士學位</p>
+</div>
+
+<div class="timeline-item">
+<strong>2022 - 2025</strong>
+<p>高中就讀學校</p>
+</div>
+
+</div>
+
+<div class="card">
+<div class="title">實習 / 專案經歷</div>
+
+<div class="timeline-item">
+<strong>2024 - 2025</strong>
+<p>學校專案開發團隊</p>
+<p>影像剪輯與內容創作</p>
+</div>
+
+<div class="timeline-item">
+<strong>2023 - 2024</strong>
+<p>校園志工</p>
+</div>
+
+</div>
+
+<div class="card">
+<div class="title">自我介紹</div>
+<p>
+您好，我是亞洲大學資訊傳播學系的柯靜宜。<br><br>
+我對創作與影像製作充滿熱情，並具備良好的學習能力與團隊合作精神。<br><br>
+希望未來能在創意產業發展。
+</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- 圖片放大 -->
+<div class="image-modal" id="imgModal" onclick="closeImage()">
+    <img id="modalImg">
+</div>
+
+<script>
+document.querySelectorAll(".skill-level").forEach(el=>{
+    setTimeout(()=>{
+        el.style.width = el.dataset.level + "%";
+    },300);
+});
+
+function openImage(src){
+    document.getElementById("imgModal").style.display = "flex";
+    document.getElementById("modalImg").src = src;
+}
+
+function closeImage(){
+    document.getElementById("imgModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
